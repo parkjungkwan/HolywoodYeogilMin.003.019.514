@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yeogil.web.mapper.AirportInfoMapper">
+	<select id="createAirport" parameterType="com.yeogil.web.domain.AirportInfoDTO">
+	 INSERT INTO AIRPORTINFO( S_AIRPORT_NAME,
+		 							S_DEPARTURE_TIME,
+		 							S_ARRIVAL_TIME,
+		 							S_DEPART_AIRPORT,
+		 							S_ARRIVAL_AIRPORT,
+		 							S_DEPART_DATE,
+		 							S_ARRIVAL_DATE,
+		 							S_AIRPORT_NAMER,
+		 							S_DEPARTURE_TIMER,
+		 							S_ARRIVAL_TIMER,
+		 							S_DEPART_DATER,
+		 							S_ARRIVAL_DATER,
+		 							S_PRICER,
+		 							S_ARRIVAL_AIRPORTR,
+		 							S_DEPART_AIRPORTR) 
+							VALUES(#{sAirportName},
+									#{sDepartureTime},
+									#{sArrivalTime},
+									#{sDepartAirport},
+									#{sArrivalAirport},
+									#{sDepartDate},
+									#{sArrivalDate},
+									#{sAirportNamer},
+									#{sDepartureTimer},
+									#{sArrivalTimer},
+									#{sDepartDater},
+									#{sArrivalDater},
+									#{sPricer},
+									#{sArrivalAirportr},
+									#{sDepartAirportr}
+									)
+	</select>
+	<select id="selectDepartureAirports" resultType="com.yeogil.web.domain.AirportLeaveDTO">
+	  SELECT AIRPORT_NAME airportName,
+	  		DEPARTURE_TIME departureTime,
+	  		ARRIVAL_TIME arrivalTime,
+	  		DEPART_AIRPORT departAirport,
+	  		ARRIVAL_AIRPORT arrivalAirport,
+	  		DEPART_DATE departDate,
+	  		ARRIVAL_DATE arrivalDate,
+	  		AIR_IMG airImg
+	  FROM AIRPORTLEAVE
+	</select>
+	<select id="selectArrivalAirports" resultType="com.yeogil.web.domain.AirportReturnDTO">
+	  SELECT
+	  		AIRPORT_NAMER airportNameR,
+	  		DEPARTURE_TIMER departureTimeR,
+	  		ARRIVAL_TIMER arrivalTimeR,
+	  		DEPART_DATER departDateR,
+	  		ARRIVAL_DATER arrivalDateR,
+	  		PRICER priceR,
+	  		AIR_IMGR airImgR,
+	  		ARRIVAL_AIRPORTR arrivalAirportR,
+	  		DEPART_AIRPORTR departAirportR
+	  FROM AIRPORTRETURN
+	</select>
+	<resultMap id="attractionMap" type="hashmap">
+	  <id property="attrSeq" column="ATTR_SEQ" />
+	  <result property="attrName" column="ATTR_NAME" />
+	  <result property="attrEname" column="ATTR_ENAME" />
+	  <result property="attrLat" column="ATTR_LAT" />
+	  <result property="attrLng" column="ATTR_LNG" />
+	  <result property="cityEname" column="CITY_ENAME" />
+	  <result property="attrImg" column="ATTR_IMG" />
+	  <result property="countryName" column="COUNTRY_NAME" />
+	</resultMap>
+	<select id="countAttractionsByCountry" resultType="int" parameterType="string">
+	  	SELECT COUNT(*)
+		FROM ATTRACTION
+		WHERE COUNTRY_NAME LIKE #{value}
+	</select>
+	<select id="selectAttractions" resultMap="attractionMap" parameterType="com.yeogil.web.controller.Proxy">
+	  	SELECT *
+		FROM ATTRACTION
+		WHERE COUNTRY_NAME LIKE #{search}
+		LIMIT #{startRow}, #{pageSize}
+	</select>
+	<resultMap id="cityMap" type="hashmap">
+	  <id property="citySeq" column="CITY_SEQ" />
+	  <result property="cityName" column="CITY_NAME" />
+	  <result property="cityEname" column="CITY_ENAME" />
+	  <result property="imgName" column="IMG_NAME" />
+	  <result property="imgUrl" column="IMG_URL" />
+	  <result property="cityLat" column="CITY_LAT" />
+	  <result property="cityLng" column="CITY_LNG" />
+	  <result property="countryEname" column="COUNTRY_ENAME" />
+	</resultMap>
+	<select id="selectCitiesWithImagesByCountry" resultMap="cityMap" parameterType="string">
+	  SELECT * 
+	  FROM (SELECT * FROM CITY WHERE COUNTRY_ENAME LIKE #{value} order by CITY_SEQ) as c join IMAGE as i
+	  WHERE CITY_ENAME like i.IMG_NAME
+	</select>
+	<select id="countCities" resultType="int">
+	  	SELECT COUNT(*)
+		FROM IMAGE JOIN CITY as c 
+		WHERE IMG_NAME LIKE c.CITY_ENAME
+	</select>
+	<select id="selectCitiesWithImages" resultMap="cityMap" parameterType="com.yeogil.web.controller.Proxy">
+	  	SELECT *
+		FROM (SELECT * FROM CITY WHERE COUNTRY_ENAME LIKE #{search} order by CITY_SEQ) as c JOIN IMAGE as i
+		WHERE CITY_ENAME like i.IMG_NAME
+		order by c.CITY_SEQ
+		LIMIT #{startRow}, #{pageSize}
+	</select>
+
+	
+	<select id="selectCitiesByCountry" resultMap="cityMap" parameterType="string">
+	  	SELECT * FROM CITY 
+		WHERE COUNTRY_ENAME LIKE #{value};
+	</select>
+	<resultMap id="countryMap" type="hashmap">
+	  <id property="countrySeq" column="COUNTRY_SEQ" />
+	  <result property="countryName" column="COUNTRY_NAME"/>
+	  <result property="countryEname" column="COUNTRY_ENAME"/>
+	  <result property="continentName" column="CONTINENT_NAME"/>
+	  <result property="countryLng" column="COUNTRY_LNG"/>
+	  <result property="countryLat" column="COUNTRY_LAT"/>
+	</resultMap>
+	<select id="selectCountries" resultMap="countryMap">
+	  SELECT * FROM COUNTRY
+	</select>
+	<select id="countCountries" resultType="int">
+	  SELECT COUNT(*) AS COUNT FROM COUNTRY
+	</select>
+	<select id="selectCountriesWithImages" resultMap="countryMap" parameterType="com.yeogil.web.controller.Proxy" >
+		SELECT *
+		FROM (SELECT * FROM COUNTRY WHERE CONTINENT_NAME LIKE #{search} order by COUNTRY_SEQ) as c JOIN IMAGE as i
+		WHERE COUNTRY_NAME like i.IMG_NAME
+	</select>
+	<select id="selectTopCountryTouristPreferenced" 
+						resultType="com.yeogil.web.domain.CountryDTO" >
+		SELECT COUNTRY_NAME countryName,COUNTRY_FLAG countryFlag
+		FROM COUNTRY c JOIN (select MS_COUNTRY_NAME ,COUNT(MS_COUNTRY_NAME) cou
+								FROM MEMSCH
+								GROUP BY MS_COUNTRY_NAME
+								ORDER BY cou desc) d
+		WHERE c.COUNTRY_NAME LIKE d.MS_COUNTRY_NAME AND COUNTRY_FLAG IS NOT NULL
+		LIMIT 1
+	</select>
+	<select id="selectCountriesTouristPreferenced" resultType="com.yeogil.web.domain.CountryDTO" >
+		SELECT COUNTRY_NAME countryName,COUNTRY_FLAG countryFlag, cou countryCount
+		FROM COUNTRY c JOIN (select MS_COUNTRY_NAME ,COUNT(MS_COUNTRY_NAME) cou
+								FROM MEMSCH
+								GROUP BY MS_COUNTRY_NAME
+								ORDER BY cou desc) d
+		WHERE c.COUNTRY_NAME LIKE d.MS_COUNTRY_NAME AND COUNTRY_FLAG IS NOT NULL
+	</select>
+	<select id="insertHotel" parameterType="com.yeogil.web.domain.HotelDTO">
+	 INSERT INTO HOTEL(HOTEL_NAME,
+	 							PRICE,
+	 							ROOM_TYPE,
+	 							NOTICE,
+	 							IMG_URL) 
+							VALUES(#{hotelName},
+									#{price},
+									#{roomType},
+									#{notice},
+									#{imgUrl})
+	</select>
+	<select id="selectImage" resultType="com.yeogil.web.domain.ImageDTO"
+		parameterType="com.yeogil.web.domain.ImageDTO">
+		SELECT IMG_NAME imgName,IMG_URL imgUrl
+		FROM IMAGE 
+		WHERE IMG_NAME LIKE #{imgName}
+	</select>
+	<insert id="insertMember">
+		INSERT INTO MEMBER(MEMBER_ID,NICKNAME,THUMBNAIL_IMAGE) 
+		VALUES(#{memberId},#{nickname},#{thumbnailImg})
+	</insert>
+	
+	<select id="existMember" parameterType="com.yeogil.web.domain.MemberDTO" 
+							resultType="boolean">
+		SELECT if(COUNT(*)>0,'true','false')
+		FROM MEMBER
+		WHERE MEMBER_ID LIKE #{memberId}
+	</select>
+	
+	<update id="updateMember"
+			parameterType="com.yeogil.web.domain.MemberDTO"
+			flushCache="true"
+			statementType="PREPARED"
+			timeout="20">
+			UPDATE MEMBER 
+				SET NICKNAME = #{nickname}
+					,THUMBNAIL_IMAGE = #{thumbnailImg}
+			WHERE MEMBER_ID LIKE #{memberId}
+	</update>
+	
+	<select id="countMembers" resultType="int">
+		SELECT COUNT(*)
+		FROM MEMBER
+	</select>
+	
+	
+	
+	
+	<select id="selectSchedulesForMember" resultType="com.yeogil.web.domain.MemschDTO">
+	  	SELECT COUNTRY_CODE countryCode,COUNT(MS_COUNTRY_NAME) msCount,COUNTRY_NAME countryName
+		FROM COUNTRY JOIN MEMSCH
+		WHERE MS_COUNTRY_NAME LIKE COUNTRY_NAME
+		GROUP BY COUNTRY_CODE,COUNTRY_NAME
+	</select>
+	<select id="countSchedulesForMember" resultType="int" >
+		SELECT COUNT(*)
+		FROM MEMSCH
+	</select>
+	<insert id="insertSchedule" parameterType="com.yeogil.web.domain.ScheduleDTO">
+		INSERT INTO MEMSCH (MS_SEQ ,MS_COUNTRY_NAME,MS_TITLE,MEMBER_ID)
+		VALUES(0,#{ctr},#{planTitle},#{member_id})
+		<selectKey resultType="int" keyProperty="ms_seq" order="AFTER" >
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+
+	<insert id="insertSchedule2" parameterType="com.yeogil.web.domain.MemschCityDTO">
+		INSERT INTO MEMSCHCTIY (MS_DATE,MS_CITY_NAME,MS_DAY,MS_SEQ)
+		VALUES(#{msDate},#{msCityName},#{msDay},#{ms_seq})
+		<selectKey resultType="int" keyProperty="ms_ctiy_seq" order="AFTER" >
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+	
+	<insert id="insertSchedule3" parameterType="com.yeogil.web.domain.MemschAttrDTO">
+		INSERT INTO MEMSCHATTR (MS_ATTR_NAME,MS_CTIY_SEQ)
+		VALUES(#{msAttrName},#{ms_ctiy_seq})
+	</insert>
+
+	<select id="countSchedules" resultType="int" >
+		SELECT COUNT(*)
+		FROM SCHEDULE
+	</select>
+	
+	<resultMap id="freeMap" type="hashmap"></resultMap>
+	
+	<select id="selectSchedulesGroupByCity" resultMap="freeMap" 
+							parameterType="com.yeogil.web.controller.Proxy">
+		SELECT MEMSCHCTIY.MS_CTIY_SEQ, MS_DAY, MS_DATE, MS_COUNTRY_NAME, MS_CITY_NAME
+		FROM MEMSCHATTR
+			JOIN MEMSCHCTIY ON MEMSCHATTR.MS_CTIY_SEQ = MEMSCHCTIY.MS_CTIY_SEQ
+			JOIN MEMSCH ON MEMSCH.MS_SEQ = MEMSCHCTIY.MS_SEQ
+			JOIN MEMBER ON MEMBER.MEMBER_ID = MEMSCH.MEMBER_ID
+		WHERE MEMBER.MEMBER_ID LIKE #{id}
+			AND MEMSCH.MS_TITLE LIKE #{title}
+		GROUP BY MEMSCHCTIY.MS_CTIY_SEQ, MS_DAY, MS_DATE, MS_COUNTRY_NAME, MS_CITY_NAME
+		
+	</select>
+	
+	<select id="selectSchedulesByTitle" resultMap="freeMap" 
+							parameterType="com.yeogil.web.controller.Proxy">
+		SELECT MS_ATTR_NAME, MS_DAY
+		FROM MEMSCHATTR 
+			JOIN MEMSCHCTIY ON MEMSCHATTR.MS_CTIY_SEQ = MEMSCHCTIY.MS_CTIY_SEQ
+			JOIN MEMSCH ON MEMSCH.MS_SEQ = MEMSCHCTIY.MS_SEQ
+			JOIN MEMBER ON MEMBER.MEMBER_ID = MEMSCH.MEMBER_ID
+		WHERE MEMBER.MEMBER_ID LIKE #{id}
+			AND MEMSCH.MS_TITLE LIKE #{title}
+	</select>
+	<select id="selectSchedulesByUserid" resultMap="freeMap" parameterType="string">
+		SELECT *,(SELECT IMG_URL FROM IMAGE
+				WHERE IMG_NAME LIKE MEMSCH.MS_COUNTRY_NAME) IMG_URL
+		FROM MEMSCH	JOIN MEMBER ON MEMBER.MEMBER_ID = MEMSCH.MEMBER_ID
+			WHERE MEMBER.MEMBER_ID LIKE #{value}
+	</select>
+	<select id="selectAttractionsBySchedule" resultType="com.yeogil.web.domain.AttractionDTO" 
+				parameterType="com.yeogil.web.domain.ScheduleDTO">
+		SELECT ATTR_NAME attrName,CITY_NAME cityName
+		FROM ATTRACTION
+		WHERE CITY_NAME LIKE #{city}
+		LIMIT #{continetn_seq}
+	</select>
+</mapper>

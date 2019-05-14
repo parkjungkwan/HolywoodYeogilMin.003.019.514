@@ -1,0 +1,121 @@
+@charset "UTF-8";
+
+.cat_right_weekday {
+	text-align: left;
+}
+
+.labels {
+	color: #fff;
+	background: url('/res/img/map/label_blue.png');
+	font-family: "nanum";
+	font-size: 12px;
+	font-weight: bold;
+	text-align: center;
+	min-width: 40px;
+	height: 21px;
+	line-height: 22px;
+	padding-right: 3px;
+	padding-left: 7px;
+	border: 0px solid #b3b3b3;
+	border-left: 0px;
+	white-space: nowrap;
+	z-index: -1 !important;
+}
+
+.s_label {
+	color: #fff;
+	background: url('/res/img/map/s_label.png');
+	font-family: "nanum";
+	font-size: 12px;
+	font-weight: bold;
+	text-align: center;
+	min-width: 40px;
+	height: 21px;
+	line-height: 22px;
+	padding-right: 3px;
+	padding-left: 7px;
+	border: 0px solid #b3b3b3;
+	border-left: 0px;
+	white-space: nowrap;
+	z-index: -1 !important;
+}
+
+#budget_currency_select_list {
+	width: 70px;
+	font-size: 13px;
+	color: #808080;
+	position: absolute;
+	margin-top: 31px;
+	display: none;
+}
+
+#budget_currency_select_list div {
+	height: 30px;
+	background: #fff;
+	border: solid #c8c8ca 1px;
+	border-top: 0px;
+	line-height: 30px;
+	cursor: pointer;
+}
+
+#header {
+	height: 65px !important
+}
+
+.gnb_box {
+	height: 63px;
+}
+
+.logo {
+	padding-top: 13px
+}
+
+#plan_title {
+	margin-top: 9px;
+	width: 337px;
+}
+
+#plan_title.on {
+	padding-right: 0px
+}
+
+#date_pick {
+	position: absolute;
+	width: 230px;
+	display: none;
+	margin-top: 5px;
+	margin-left: 45px;
+}
+
+.ui-datepicker {
+	margin-top: -2px;
+}
+
+.iinfo_close {
+	position: absolute;
+	right: -25px !important;
+	cursor: pointer;
+	width: 25px;
+	height: 25px;
+	background: url('/res/img/workspace/new/infobubble_close_btn.png');
+	text-indent: -5000px;
+	overflow: hidden;
+	border: 0px none;
+	outline: medium none;
+}
+
+#budget_currency {
+	width: 70px;
+	height: 31px;
+	border: solid #c8c8ca 1px;
+	background: #fff url('/res/img/flight/drop_select_arrow_a.png')
+		no-repeat 55px 12px;
+	line-height: 31px;
+	margin: 0 auto;
+	margin-top: 0px;
+	padding-left: 15px;
+	font-size: 13px;
+	color: #808080;
+	text-align: left;
+	cursor: pointer;
+}

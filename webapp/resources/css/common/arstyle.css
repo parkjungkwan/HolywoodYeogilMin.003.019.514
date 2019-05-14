@@ -1,0 +1,143 @@
+.aseo_section {
+  position: relative;
+  height: 100vh;
+}
+
+.aseo_section .section-center {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+#aseo_booking {
+  font-family: 'Poppins', sans-serif;
+  background-image: url('../img/background.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+#aseo_booking::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.aseo_booking-form {
+  background: #fff;
+  border-radius: 2px;
+}
+
+.aseo_booking-form>form .aseo_row.aseo_no-margin {
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
+.aseo_booking-form>form .aseo_row.no-margin>[class*="col-"] {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+.aseo_booking-form .aseo_form-group {
+  position: relative;
+  padding: 25px;
+  margin-bottom: 0px;
+}
+
+.aseo_booking-form .aseo_form-group:after {
+  content: '';
+  background: rgba(129, 131, 144, 0.15);
+  position: absolute;
+  top: 25px;
+  bottom: 0;
+  right: 0px;
+  width: 2px;
+  height: 75px;
+}
+
+.aseo_booking-form .aseo_form-control {
+  background-color: transparent;
+  border-radius: 0px;
+  border: none;
+  height: 50px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  font-size: 20px;
+  color: #222;
+  font-weight: 400;
+  padding: 0;
+}
+
+.aseo_booking-form .aseo_form-control::-webkit-input-placeholder {
+  color: #818390;
+}
+
+.aseo_booking-form .aseo_form-control:-ms-input-placeholder {
+  color: #818390;
+}
+
+.aseo_booking-form .aseo_form-control::placeholder {
+  color: #818390;
+}
+
+.aseo_booking-form input[type="date"].aseo_form-control:invalid {
+  color: #818390;
+}
+
+.aseo_booking-form select.aseo_form-control {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.aseo_booking-form select.aseo_form-control+.aseo_select-arrow {
+  position: absolute;
+  right: 0px;
+  bottom: 30px;
+  width: 32px;
+  line-height: 32px;
+  height: 32px;
+  text-align: center;
+  pointer-events: none;
+  color: #818390;
+  font-size: 14px;
+}
+
+.aseo_booking-form select.aseo_form-control+.aseo_select-arrow:after {
+  content: '\279C';
+  display: block;
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+.aseo_booking-form .aseo_form-label {
+  color: #ff0063;
+  display: block;
+  font-weight: 400;
+  height: 25px;
+  line-height: 25px;
+  font-size: 14px;
+}
+
+.aseo_booking-form .aseo_form-btn {
+  padding: 25px;
+}
+
+.aseo_booking-form .aseo_submit-btn {
+  background: #000;
+  border: none;
+  text-transform: capitalize;
+  display: block;
+  border-radius: 100px;
+  width: 100%;
+  height: 75px;
+  font-size: 16px;
+  font-weight: 900;
+  color: #ffffff;
+}

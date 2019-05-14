@@ -1,0 +1,119 @@
+@charset "utf-8";
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+ u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+}
+
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+a, a:hover{
+	text-decoration:none;
+}
+
+body, html{
+	margin:0;
+	padding:0;
+	width:100%;
+	height:100%;
+	font-family:nanum;
+	font-size:12px;
+}
+
+html{
+	overflow-y:scroll;
+}
+
+/* @font-face {
+	font-family: 'nanum';
+	src: url('<%=application.getContextPath()%>/resources/file/font/NanumBarunGothic.eot') format('eot');
+	src: url('<%=application.getContextPath()%>/resources/file/font/NanumBarunGothic.eot?#iefix') format('embedded-opentype'),
+		url('<%=application.getContextPath()%>/resources/file/font/NanumBarunGothic.woff') format('woff'),
+		url('<%=application.getContextPath()%>/resources/file/font/NanumBarunGothic.ttf') format('truetype');
+	font-weight:normal;
+	font-style:normal;
+}
+
+@font-face {
+	font-family: 'nanum_b';
+	src: url('<%=application.getContextPath()%>/resources/file/font/NanumBarunGothic.eot') format('eot');
+	src: url('<%=application.getContextPath()%>/resources/file/font/NanumBarunGothic.eot?#iefix') format('embedded-opentype'),
+		url('<%=application.getContextPath()%>/resources/file/font/NanumBarunGothic.woff') format('woff'),
+		url('<%=application.getContextPath()%>/resources/file/font/NanumBarunGothic.ttf') format('truetype');
+	font-weight:normal;
+	font-style:normal;
+} */
+
+*{
+	font-family:'나눔바른고딕',NanumBarunGothic,'nanum','돋움',Dotum,'맑은고딕','Malgun Gothic','굴림',Gulim,Helvetica,sans-serif;
+}
+
+.clear{
+	clear:both;
+}
+
+.fl{float:left;}
+
+.fr{float:right;}
+
+#wrap {width:100%; height:100%; margin:0 auto;}
+#header {position:relative; float:left; height:60px; background-color:white; width:100%;min-width:1092px; z-index:100;border-bottom: 1px solid #ddd;}
+#container {float:left; width:100%; min-height:100%; margin: -60px 0 -400px;}
+* html #container {height:100%;}
+#content {float:left; width:100%; padding-bottom:30px;}
+#footer {position:relative; float:left; height:400px; width:100%;} 
+
+div, input, label, a, select{
+	box-sizing:border-box;
+}
+
+.error{
+	color:red;
+	padding-top:3px;
+}
+#paging{padding:15px 0 30px;text-align:center;}
+#paging button{min-width:23px;height:20px;margin-left:3px;padding:1px 4px;border:1px solid transparent;background-color:transparent;color:#808080;font-size:11px;vertical-align:top;cursor:pointer;}
+#paging button:hover{border:1px solid #c6c6c6;}
+#paging button.on{border:1px solid #1a7ad9;color:#1a7ad9;font-weight:bold;}
+#paging .nv button{width:24px;border:1px solid #c6c6c6;text-indent:-5000px;overflow:hidden;}
+/* #paging .pgn-pv1{background:url('/resources/img/common/paging/pg_first.png') no-repeat;background-position:6px 4px;}
+#paging .pgn-pv2{background:url('/resources/img/common/paging/pg_prev.png') no-repeat;background-position:10px 4px;}
+#paging .pgn-nx1{background:url('/resources/img/component/pg_last.png') no-repeat;background-position:7px 4px;}
+#paging .pgn-nx2{background:url('/resources/img/component/pg_next.png') no-repeat;background-position:10px 4px;} */
+/* [class^="pgn-"],[class*=" pgn-"]{display:inline-block;background-image:url(../img/bt_paging.png);background-repeat:no-repeat;} */

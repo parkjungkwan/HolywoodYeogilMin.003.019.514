@@ -1,0 +1,588 @@
+@charset "UTF-8";
+
+html, body {
+	/* overflow: hidden !important; */
+}
+
+.left_full_box {
+	border-right: solid 1px #a7a7a7;
+	height: 100%;
+	z-index: 999;
+}
+
+#cat_menu {
+	width: 70px;
+	height: 100%;
+	background: #203341
+}
+
+#cat_menu li {
+	width: 70px;
+	height: 70px;
+	background: #203341;
+	color: #fff;
+	text-align: center;
+	border-bottom: solid 1px #374854;
+	font-size: 12px;
+	cursor: pointer;
+}
+
+#cat_menu li img {
+	padding-top: 17px;
+	padding-bottom: 9px;
+}
+
+#cat_menu li img.s {
+	padding-top: 10px;
+	padding-bottom: 0px;
+}
+
+#cat_menu li.on {
+	background: #1a7ad9;
+	border-bottom: solid 1px #1a7ad9;
+}
+
+#cat_menu li:not (.on ):hover {
+	background: #164c88;
+}
+
+#schedule_day_list_box {
+	overflow-y: scroll;
+}
+
+#top_menu {
+	width: 100%;
+	height: 45px;
+	background: url(/res/map/mn_top_bg.png);
+	position: absolute;
+	top: 74px;
+	left: 445px;
+	z-index: 2;
+}
+
+#clip_view_btn {
+	width: 110px;
+	height: 20px;
+	font-size: 11px;
+	color: #666666;
+	margin-top: 10px;
+	margin-left: 12px;
+	padding-left: 25px;
+	padding-top: 6px;
+	cursor: pointer;
+	background: url('/res/map/clip_checkbox_null.png') no-repeat;
+}
+
+#clip_view_btn.on {
+	background: url('/res/map/clip_checkbox_checked.png') no-repeat;
+}
+
+.go_list_btn {
+	width: 110px;
+	height: 20px;
+	font-size: 11px;
+	color: #666666;
+	margin-top: 15px;
+	margin-left: 12px;
+	padding-left: 16px;
+	padding-top: 1px;
+	cursor: pointer;
+	background: url('/res/map/go_list_btn.png') no-repeat;
+}
+
+.item_sub_info_box {
+	color: #707070;
+	font-size: 13px;
+	position: absolute;
+	bottom: 0px;
+	left: 0px
+}
+
+.clip_btn {
+	padding: 0 5px;
+	height: 32px;
+	background: #555555;
+	border: solid #3b3b3b 1px;
+	color: #fff;
+	font-size: 15px;
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+	text-align: center;
+	line-height: 30px;
+	cursor: pointer;
+}
+
+.clip_btn.on {
+	background: #ff9320;
+	border: solid #f7870f 1px;
+}
+
+#select_detail_view_city {
+	width: 430px;
+	position: absolute;
+	left: 10px;
+	top: 10px;
+	padding-bottom: 20px;
+	z-index: 999;
+	background: #fff;
+	border-radius: 5px;
+	display: none;
+}
+
+.detail_view_full_box {
+	width: 337px;
+	background: url('/res/map/detail_bg.png');
+	position: relative;
+}
+
+#select_detail_view_city .city_title {
+	width: 100%;
+	height: 59px;
+	line-height: 59px;
+	padding-left: 20px;
+	color: #363636;
+	font-size: 17px;
+	font-weight: bold;
+	background: #1a7ad9;
+	color: #fff;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+#country_list_box .item {
+	padding: 15px;
+	cursor: pointer;
+	border-bottom: solid #a7a7a7 1px;
+	background-color: #fff;
+	width: 248px;
+	position: relative;
+	/* background: url('/res/img/workspace/new/cu_next_icon.png') no-repeat */
+		225px 30px;
+}
+
+#country_list_box .item:hover {
+	background-color: #f7f7f7;
+}
+
+.item .img_box {
+	width: 62px;
+	height: 55px;
+	position: relative;
+}
+
+.item .img_box img {
+	width: 62px;
+	height: 55px;
+}
+
+.item .info_box {
+	margin-left: 5px;
+}
+
+#country_list_box {
+	overflow-y: scroll;
+}
+
+.item .info_title {
+	font-size: 15px;
+	color: #363636;
+}
+
+.item .info_sub_title {
+	font-size: 15px;
+	color: #b3b3b3;
+	margin-top: 5px;
+}
+
+#city_list_box {
+	overflow-y: scroll;
+}
+
+#city_list_box .item {
+	padding: 15px;
+	cursor: pointer;
+	border-bottom: solid #a7a7a7 1px;
+	background-color: #fff;
+	width: 248px;
+	position: relative;
+}
+
+#city_list_box .item:hover {
+	background-color: #f7f7f7;
+}
+
+.spot_to_inspot {
+	cursor: pointer;
+	position: absolute;
+	top: 25px;
+	right: 15px;
+}
+
+.labels {
+	color: #363636;
+	background-color: white;
+	font-family: "nanum";
+	font-size: 11px;
+	font-weight: bold;
+	text-align: center;
+	min-width: 40px;
+	padding: 2px;
+	border: 1px solid black;
+	white-space: nowrap;
+}
+
+#date_pick {
+	position: absolute;
+	width: 230px;
+	display: none;
+	margin-top: -5px;
+}
+
+#date_pick_btn {
+	min-width: 60px
+}
+
+.ui-datepicker {
+	margin-top: -2px;
+}
+
+#selected_cities {
+	width: 100%;
+	padding: 0px 15px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	overflow-y: auto
+}
+
+.s_cities {
+	width: 100%;
+	min-height: 39px;
+}
+
+.city_info {
+	height: 39px;
+	background: #efefef;
+	color: #555555;
+	font-size: 15px;
+	line-height: 39px;
+	border-radius: 5px;
+	cursor: move;
+}
+
+.city_route_info {
+/* 	background: url('/resources/img/map/item_route_bg.png') no-repeat
+		20px 0px; */
+	width: 100%;
+	height: 41px;
+	padding-left: 63px;
+	font-size: 11px;
+	color: #808080
+}
+
+.city_distance_info {
+	margin-top: 16px;
+}
+
+.del_city_btn {
+	cursor: pointer;
+	margin: 4px 10px
+}
+
+.city_set_day_box {
+	margin-right: 10px;
+}
+
+.city_set_minus_btn {
+	cursor: pointer;
+	margin-top: 3px;
+	margin-right: 3px;
+}
+
+.city_set_plus_btn {
+	cursor: pointer;
+	margin-top: 3px;
+	margin-left: 3px;
+}
+
+.city_set_day_info {
+	color: #555555;
+	font-size: 13px;
+	min-width: 40px;
+	text-align: center;
+}
+
+.city_air_search_btn {
+	min-width: 79px;
+	height: 23px;
+	border: solid #cacaca 1px;
+/* 	background: url('/res/img/workspace/new/air_search_icon.png') no-repeat
+		right 5px top 3px; */
+	line-height: 23px;
+	padding-left: 15px;
+	padding-right: 25px;
+	cursor: pointer;
+	margin-top: 7px;
+	margin-right: 15px;
+	color: #808080;
+	display: none;
+}
+
+.detail_city_bottom {
+	padding-top: 20px;
+	border-top: solid #d6d6d6 1px
+}
+
+.detail_plan_go_btn {
+	width: 270px;
+	height: 44px;
+	line-height: 44px;
+	text-align: center;
+	color: #fff;
+	font-size: 16px;
+	margin: 0 auto;
+	background: #49b2e9;
+	border: solid #3099dd 1px;
+	cursor: pointer;
+}
+
+.pn_date_box {
+	margin-right: 15px;
+	cursor: pointer;
+}
+
+.pn_date_info {
+	font-size: 13px;
+	text-decoration: underline;
+	margin-right: 12px;
+	margin-top: 4px;
+}
+
+.pn_date_icon {
+	margin-top: 3px;
+}
+
+.list_title {
+	width: 265px;
+	height: 70px;
+	background: #1a7ad9;
+	line-height: 70px;
+	color: #fff;
+	padding-left: 10px;
+	font-size: 17px;
+	font-weight: bold;
+}
+
+#schedule_full_box .title_box {
+	width: 265px;
+	height: 70px;
+	background: #707070;
+	color: #fff;
+	line-height: 70px;
+	font-size: 17px;
+	font-weight: bold;
+	padding: 0px 10px;
+}
+
+#schedule_full_box .title_box .sub {
+	font-size: 13px;
+	color: #fff;
+	font-weight: normal;
+	text-decoration: underline;
+}
+
+.day_item {
+	width: 100%;
+	height: 86px;
+	border-bottom: solid #a7a7a7 1px;
+	padding-left: 10px;
+	cursor: pointer;
+	position: relative;
+	overflow: hidden;
+}
+
+.day_item.hover {
+	height: auto;
+}
+
+.day_item.edit {
+	cursor: move;
+}
+
+.day_item:hover {
+	background: #f7f7f7;
+}
+
+.day_item_circle {
+	width: 73px;
+	height: 73px;
+	background: url('/res/img/workspace/schedule_day_box.png');
+	position: relative;
+}
+
+.day_item_circle .day {
+	font-size: 20px;
+	color: #46b5f1;
+	position: absolute;
+	top: 20px;
+	width: 73px;
+	text-align: center;
+}
+
+.day_item_circle .date {
+	font-size: 13px;
+	color: #808080;
+	position: absolute;
+	top: 45px;
+	width: 73px;
+	text-align: center;
+}
+
+#clip_list {
+	width: 265px;
+	z-index: 999;
+	position: absolute;
+	left: 0px;
+	height: 100%;
+	background: #fff;
+	display: none;
+}
+
+#city_list {
+	width: 265px;
+	z-index: 999;
+	position: absolute;
+	left: 0px;
+	height: 100%;
+	background: #fff;
+	display: none;
+}
+
+#hotel_list {
+	width: 265px;
+	z-index: 999;
+	position: absolute;
+	left: 0px;
+	height: 100%;
+	background: #fff;
+	display: none;
+}
+
+#transport_list {
+	width: 265px;
+	z-index: 999;
+	position: absolute;
+	left: 0px;
+	height: 100%;
+	background: #fff;
+	display: none;
+}
+
+.back_btn {
+	width: 13px;
+	height: 23px;
+	/* background: url('/res/img/workspace/back_btn.png'); */
+	margin-top: 22px;
+	cursor: pointer;
+}
+
+#city_list_title {
+	display: none;
+}
+
+#country_list_title .sub {
+	cursor: pointer;
+}
+
+.ui-sortable-helper {
+	border: solid #1a7ad9 1px;
+	background: #f7f7f7;
+	height: 86px;
+}
+
+.ui-draggable-dragging {
+	border: solid #1a7ad9 1px;
+	background: #f7f7f7;
+	height: 86px;
+}
+
+.ui-state-highlight {
+	background: #fff;
+	height: 86px;
+}
+
+.list_box {
+	overflow-y: scroll;
+	background: #fff;
+}
+
+#add_plan_day {
+	width: 218px;
+	height: 42px;
+	line-height: 42px;
+	text-align: center;
+	color: #46b5f1;
+	border: solid #46b5f1 1px;
+	font-size: 15px;
+	margin: 0 auto;
+	margin-top: 10px;
+	cursor: pointer;
+}
+
+.spot_distance_box {
+	height: 21px;
+	line-height: 21px;
+	background: #fff;
+	border: solid #cacaca 1px;
+	font-size: 11px;
+	color: #808080;
+	position: absolute;
+	padding: 0px 5px;
+	margin-top: -25px;
+}
+
+.spot_distance_box:hover {
+	text-decoration: underline;
+}
+
+#ddFrame {
+	position: absolute;
+	top: 10px !important;
+	right: 10px !important;
+	left: initial !important;
+	border: 1px solid #ccc;
+	width: 25%;
+	height: 520px;
+	background: rgb(255, 255, 255);
+	background: rgba(255, 255, 255, 0.8);
+	padding: 0px 0px;
+	z-index: 40;
+}
+
+#ddBox {
+	overflow-y: scroll;
+	width: 97%;
+	height: 500px;
+	margin: 0px;
+	border: 2px solid #fff;
+	border-top: 16px solid #fff;
+}
+
+#ddBoxClose {
+	background: url(http://earthtory.com/res/img/map/direction_close.png)
+		no-repeat;
+	height: 16px;
+	width: 16px;
+	cursor: pointer;
+}
+
+#ddBoxPrint {
+	background: url(http://earthtory.com/images/print.png) no-repeat;
+	height: 16px;
+	width: 26px;
+	padding-left: 20px;
+	left: 4px !important;
+	cursor: pointer;
+	text-decoration: none;
+	color: #66e
+}
